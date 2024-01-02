@@ -1,16 +1,16 @@
 resource "aws_eip" "nat1" {
-  vpc  = true
+  domain   = "vpc"
   tags = local.default_tags
 }
 
 resource "aws_eip" "nat2" {
-
+  domain   = "vpc"
   count = var.single_nat ? 0 : 1
   tags  = local.default_tags
 }
 
 resource "aws_eip" "nat3" {
-  vpc   = true
+  domain   = "vpc"
   count = !var.single_nat && var.enable_third_subnet ? 1 : 0
   tags  = local.default_tags
 }
