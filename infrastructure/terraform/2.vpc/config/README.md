@@ -2,9 +2,9 @@ The Terraform State configuration file for the various environments.
 
 It has the following values:
 
-- `bucket = "backend-terraform-state-{Environment}"`
-- `key = "github-actions-role/{Environment}/terraform.tfstate"`
-- `encrypt  = true`
+- `bucket = "terraform-ops-demo-do-not-delete-state"`
+- `key = "vpc-infra/dev/terraform.tfstate"`
+- `encrypt  = false`
 
 The `bucket` and `key` values specify the bucket name and subfolder in which the terraform state files get stored.
 

@@ -4,7 +4,7 @@ resource "aws_eip" "nat1" {
 }
 
 resource "aws_eip" "nat2" {
-    vpc = true
+
     count = var.single_nat ? 0 : 1
     tags =  local.default_tags
 }

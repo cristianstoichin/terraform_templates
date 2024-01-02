@@ -1,4 +1,4 @@
-bucket = "terraform-ops-backend-do-not-delete-terraform-state-stage"
+bucket = "terraform-ops-demo-do-not-delete-state"
 key = "vpc-infra/dev/terraform.tfstate"
-encrypt  = true
+encrypt  = false
 region="us-west-2"
