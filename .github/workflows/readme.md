@@ -34,21 +34,6 @@ Before running the Job (manual trigger), you must first have the following Githu
    - This is a pre-requisite before running the deployment. You must have a Route53 hosted zone (public) that will be used to validate the ssl certificate.
 4. `SubDomainName' this can also be a secret but in this example I simply hardcoded the value. This must be your desired subdomain name for the website. Ex: react-demo.  
 
-### [build-deploy-spa-app.yml](3.build-deploy-spa-app.yml)
-
-The Github Action job allows you to manually `Deploy` a new version of the SPA react application by `branch`.
-
-Before running the Job (manual trigger), you must first have the following Github Repo Secrets setup:
-
-
-1. `DEPLOYMENT_ROLE_ARN`
-   - This must be an existing Role in your AWS account that will allow the job to run the `aws cloudformation deploy` command.
-      - Typically, this role is granted Admin permissions in AWS. However, be aware that this could pose a security risk. AWS recommends using the least privileged permissions for enhanced security.
-2. `S3_BUCKET`
-   - This is in the following format: `s3://{bucket-name}}`. In my case is s3://react-demo.dash-demo.click
-3. `CDN_ID`
-   - This is the AWS Cloudfront Distribution ID that you can retrieve after the `deploy-spa-infra.yml` completes successfully.
-
 #### AWS Route53 Example
 
 <p align="center">
