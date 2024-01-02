@@ -29,36 +29,36 @@ variable "vpc_cidr" {
 }
 
 variable "public_subnet_1_cidr" {
-  type        = string
+  type = string
 }
 
 variable "public_subnet_2_cidr" {
-  type        = string
+  type = string
 }
 
 variable "public_subnet_3_cidr" {
-  type        = string
+  type = string
 }
 
 variable "private_subnet_1_cidr" {
-  type        = string
+  type = string
 }
 
 variable "private_subnet_2_cidr" {
-  type        = string
+  type = string
 }
 
 variable "private_subnet_3_cidr" {
-  type        = string
+  type = string
 }
 
 variable "enable_third_subnet" {
-  type        = bool
+  type    = bool
   default = false
 }
 
 variable "single_nat" {
   type        = bool
   description = "To save on cost for development switch this to true. All private azs will point to the same NAT, losing high availablility."
-  default = false
+  default     = false
 }
