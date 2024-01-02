@@ -1,4 +1,4 @@
-name: Step 2 Deploy Spa Infra
+name: Step 2 VPC Infra
 on:
   workflow_dispatch:
     inputs:
