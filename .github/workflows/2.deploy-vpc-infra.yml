@@ -41,12 +41,14 @@ jobs:
           node-version: 18
       - name: Install Terraform
         uses: hashicorp/setup-terraform@v1
-      - name: Insert Secret
+      - name: Update Timestamp for variables
         run: |
-          cd infrastructure/terraform/2.spa/variables
-          sed -i 's/{CERT_ARN}/"${{ secrets.CERT_ARN }}"\n/' dev.tfvars
-          cat dev.tfvars
-          terraform fmt
+          cd infrastructure//terraform/2.vpc/variables
+          # Update timestamp on the non-prod-tfvars with the time this change will be performed at. It's used to modify the AWS Tag UpdatedTime that gets applied to every resource provisioned.
+          to_replace="Update_TimeStamp"
+          replace=$(date +%s000)
+          sed -i "s/$to_replace/$replace/" "${{ github.event.inputs.environment_file }}.tfvars"
+          cat "${{ github.event.inputs.environment_file }}.tfvars"
       - name: Deploy SPA Infra
         run: |
           ls 
