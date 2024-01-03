@@ -1,4 +1,4 @@
-name = "vpc-demo"
+name = "vpc-dash-demo"
 environment = "dev"
 region="us-west-2"
 vpc_cidr="10.10.0.0/16"
@@ -10,5 +10,6 @@ private_subnet_2_cidr="10.10.64.0/24"
 private_subnet_3_cidr="10.10.80.0/24"
 enable_third_subnet = false
 single_nat = true
-created = 1664206819
-timestamp = Update_TimeStamp
+enable_nat = false
+created = 1664206849
+timestamp = 1664206849

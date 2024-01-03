@@ -62,3 +62,9 @@ variable "single_nat" {
   description = "To save on cost for development switch this to true. All private azs will point to the same NAT, losing high availablility."
   default     = false
 }
+
+variable "enable_nat" {
+  type        = bool
+  description = "To save on cost for development switch this to true, but you will have no private subnets."
+  default     = false
+}

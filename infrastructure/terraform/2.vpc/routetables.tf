@@ -36,10 +36,11 @@ resource "aws_route_table_association" "public_route_association3" {
 
 #Private Route Table
 resource "aws_route_table" "private_route_table1" {
+  count         = var.enable_nat ? 1 : 0
   vpc_id = aws_vpc.vpc.id
   route {
     cidr_block = "0.0.0.0/0"
-    gateway_id = aws_nat_gateway.ngw1.id
+    gateway_id = aws_nat_gateway.ngw1[0].id
   }
   depends_on = [aws_nat_gateway.ngw1]
   tags = merge(
@@ -84,18 +85,20 @@ resource "aws_route_table" "private_route_table3" {
 
 #Associate Private Route Table to Private Subnets
 resource "aws_route_table_association" "private_route_association1" {
+  count          = var.enable_nat ? 1 : 0
   subnet_id      = aws_subnet.private_subnet_1.id
-  route_table_id = aws_route_table.private_route_table1.id
+  route_table_id = aws_route_table.private_route_table1[0].id
   depends_on     = [aws_route_table.private_route_table1, aws_subnet.private_subnet_1]
 }
 
 resource "aws_route_table_association" "private_route_association2" {
+  count          = var.enable_nat ? 1 : 0
   subnet_id      = aws_subnet.private_subnet_2.id
-  route_table_id = var.single_nat ? aws_route_table.private_route_table1.id : aws_route_table.private_route_table2[0].id
+  route_table_id = var.single_nat ? aws_route_table.private_route_table1[0].id : aws_route_table.private_route_table2[0].id
 }
 
 resource "aws_route_table_association" "private_route_association3" {
-  count          = var.enable_third_subnet ? 1 : 0
+  count          = var.enable_third_subnet && !var.enable_nat ? 1 : 0
   subnet_id      = aws_subnet.private_subnet_3[0].id
-  route_table_id = var.single_nat ? aws_route_table.private_route_table1.id : aws_route_table.private_route_table3[0].id
+  route_table_id = var.single_nat ? aws_route_table.private_route_table1[0].id : aws_route_table.private_route_table3[0].id
 }
