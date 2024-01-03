@@ -49,7 +49,7 @@ jobs:
           replace=$(date +%s000)
           sed -i "s/$to_replace/$replace/" "${{ github.event.inputs.environment_file }}.tfvars"
           cat "${{ github.event.inputs.environment_file }}.tfvars"
-      - name: Deploy SPA Infra
+      - name: Deploy VPC Infra
         run: |
           #Initialize the terraform provider with the correct State file per environment. The state is stored in a specific subfolder in an S3 bucket.
           cd infrastructure/terraform/2.vpc
