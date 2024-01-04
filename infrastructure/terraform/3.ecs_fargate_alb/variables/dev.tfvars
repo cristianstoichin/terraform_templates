@@ -5,7 +5,7 @@ application = "ecs-demo"
 #Using the default secretsmanager key. If you have a customer key, switch to that instead.
 kms_encryption_key = "aws/rds"
 log_retention = 90
-initial_image="ghcr.io/cristianstoichin/node-health:latest"
+initial_image="ghcr.io/cristianstoichin/node3000:latest"
 min_task_count = 1
 max_task_count = 4
 dns_name = "dash-demo.click"
